@@ -1,0 +1,16 @@
+{
+  "figures": [
+    { "id": "qr-001", "label": "C",  "role": "note", "sound": "sounds/C.mp3" },
+    { "id": "qr-002", "label": "C_sharp", "role": "note", "sound": "sounds/C_sharp.mp3" },
+    { "id": "qr-003", "label": "D",  "role": "note", "sound": "sounds/D.mp3" },
+    { "id": "qr-004", "label": "D_sharp", "role": "note", "sound": "sounds/D_sharp.mp3" },
+    { "id": "qr-005", "label": "E",  "role": "note", "sound": "sounds/E.mp3" },
+    { "id": "qr-006", "label": "F",  "role": "note", "sound": "sounds/F.mp3" },
+    { "id": "qr-007", "label": "F_sharp", "role": "note", "sound": "sounds/F_sharp.mp3" },
+    { "id": "qr-008", "label": "G",  "role": "note", "sound": "sounds/G.mp3" },
+    { "id": "qr-009", "label": "G_sharp", "role": "note", "sound": "sounds/G_sharp.mp3" },
+    { "id": "qr-010", "label": "A",  "role": "note", "sound": "sounds/A.mp3" },
+    { "id": "qr-011", "label": "A_sharp", "role": "note", "sound": "sounds/A_sharp.mp3" },
+    { "id": "qr-012", "label": "B",  "role": "note", "sound": "sounds/B.mp3" }
+  ]
+}
