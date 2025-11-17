@@ -9,9 +9,9 @@
   // --------- Configurable constants (tuned for throughput)
   const AUDIO_CTX = new (window.AudioContext || window.webkitAudioContext)();
   let DEBOUNCE_MS = 250;                   // lower debounce for faster repeats
-  const MAX_SIMULTANEOUS_VOICES = 10;      // allow more concurrent voices
-  const QR_CONFIG = { fps: 20, qrbox: 220 };
-  const FRAME_WINDOW_MS = 50;              // gather decoded frames for 50ms windows
+  let MAX_SIMULTANEOUS_VOICES = 15;      // increased for iPhone 12      // allow more concurrent voices
+  const QR_CONFIG = { fps: 30, qrbox: 180, aspectRatio: 1.777 }; // optimized for iPhone 12
+  const FRAME_WINDOW_MS = 25;              // reduced for faster batching              // gather decoded frames for 50ms windows
   const STAGGER_MS = 12;                   // tiny start stagger to avoid CPU spikes
 
   // --------- State
@@ -292,7 +292,7 @@
         try {
           const urls = Array.from(new Set(Object.values(figuresMap).map(f => f.sound)));
           console.log('Preloading sounds:', urls);
-          await Promise.all(urls.map(u => loadAudio(u).catch(err => { console.warn('Preload failed for', u, err); })));
+          await Promise.allSettled(urls.map(u => loadAudio(u).catch(err => { console.warn('Preload failed for', u, err); })));
           console.log('Preload complete');
         } catch (e) {
           console.warn('Preload error', e);
@@ -327,6 +327,6 @@
   window.nabokoTuning = {
     setDebounce(ms) { DEBOUNCE_MS = Number(ms) || DEBOUNCE_MS; console.log('DEBOUNCE_MS set to', DEBOUNCE_MS); },
     setFrameWindow(ms) { /* not dynamic in this build */ console.warn('Frame window is fixed in code'); },
-    setMaxVoices(n) { /* not dynamic */ console.warn('Max voices fixed in code'); }
+    setMaxVoices(n) { MAX_SIMULTANEOUS_VOICES = Number(n) || MAX_SIMULTANEOUS_VOICES; console.log('MAX_SIMULTANEOUS_VOICES set to', MAX_SIMULTANEOUS_VOICES); }
   };
 })();
